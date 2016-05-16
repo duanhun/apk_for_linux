@@ -1,8 +1,8 @@
 # -*- coding: UTF-8 -*-
 __author__ = 'Jeffrey'
 
-from models import (IndexHandler,
-                    CommandHandler,)
+from views import (IndexHandler,
+                   CommandHandler,)
 
 urls = [
     # (r'/', IndexHandler),
