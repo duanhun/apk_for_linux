@@ -1,2 +1,2 @@
 # apk_for_linux
-an apk with a linux terminal 
+a linux terminal function for an apk 
