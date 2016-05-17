@@ -23,5 +23,4 @@ class CommandHandler(BaseHandler):
         logger("command:", command)
         (status, output) = commands.getstatusoutput(command)
         # output = output.decode('gbk').encode('utf8') # windows
-        logger("status:", status, "output:", output)
-        self.write("Command:" + command)
+        self.write("Output:" + output)
