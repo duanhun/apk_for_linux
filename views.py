@@ -20,7 +20,11 @@ class IndexHandler(BaseHandler):
 class CommandHandler(BaseHandler):
     def get(self):
         command = self.get_argument('cmd', 'echo "error!"')
-        logger("command:", command)
-        (status, output) = commands.getstatusoutput(command)
+        if command == '2048':
+        # logger("command:", command)
+        # (status, output) = commands.getstatusoutput(command)
         # output = output.decode('gbk').encode('utf8') # windows
-        self.write("Output:" + output)
+        # self.write("Output:" + output)
+            self.render('template/index.html')
+        else:
+            self.render('template/error.html')

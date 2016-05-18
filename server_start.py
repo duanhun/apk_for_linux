@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 __author__ = 'Jeffrey'
 
+import os
+
 import tornado.httpserver
 import tornado.ioloop
 import tornado.options
@@ -14,7 +16,8 @@ define("port", default=12345, help="run on the given port", type=int)
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
-    app = tornado.web.Application(handlers=urls)
+    app = tornado.web.Application(handlers=urls,
+                                  static_path=os.path.join(os.path.dirname(__file__), "static"),)
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()

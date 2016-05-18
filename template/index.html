@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>2048</title>
+<link rel="stylesheet" type="text/css" href="/static/css/2048.css" />
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
+<script type="text/javascript" src="/static/js/2048.js"></script>
+<script type="text/javascript" src="/static/js/zy_event.js"></script>
+</head>
+ 
+<body>
+    <div id="div2048">
+        <a id="start">开始游戏</a>
+    </div>
+
+
+</body>
+<script>
+//function log(s){
+//        document.getElementById("contid").innerHTML = s;
+//}
+
+function move(keychar){
+    if(['W', 'S', 'A', 'D'].indexOf(keychar) > -1){
+        if(game.over()){
+            game.clean();
+            startBtn.style.display = 'block';
+            startBtn.innerHTML = 'game over, replay?';
+            return;
+        }
+        game.move(keychar);
+        }
+}
+var eva = new zyEvent(document,'up',function(){move('W')});
+var evb = new zyEvent(document,'down',function(){move('S')});
+var evc = new zyEvent(document,'left',function(){move('A')});
+var evd = new zyEvent(document,'right',function(){move('D')});
+</script>
+</html>
