@@ -1,40 +1,46 @@
-<!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>2048</title>
-<link rel="stylesheet" type="text/css" href="/static/css/2048.css" />
-<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script> -->
-<script type="text/javascript" src="/static/js/2048.js"></script>
-<script type="text/javascript" src="/static/js/zy_event.js"></script>
+    <meta charset="utf-8">
+    <title>Cocos2d-html5 Hello World test</title>
+    <link rel="icon" type="image/GIF" href="res/favicon.ico"/>
+    <meta name="viewport" content="initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <style>
+        body, canvas, div {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+    </style>
 </head>
- 
-<body>
-    <div id="div2048">
-        <a id="start">开始游戏</a>
-    </div>
-
-
-</body>
+<body style="padding:0; margin: 0; background: #000;">
+<script src="res/loading.js"></script>
+<canvas id="gameCanvas" width="480" height="720"></canvas>
 <script>
-//function log(s){
-//        document.getElementById("contid").innerHTML = s;
-//}
-
-function move(keychar){
-    if(['W', 'S', 'A', 'D'].indexOf(keychar) > -1){
-        if(game.over()){
-            game.clean();
-            startBtn.style.display = 'block';
-            startBtn.innerHTML = 'game over, replay?';
-            return;
+    (function () {
+        var nav = window.navigator;
+        var ua = nav.userAgent.toLowerCase();
+        var uaResult = /android (\d+(?:\.\d+)+)/i.exec(ua) || /android (\d+(?:\.\d+)+)/i.exec(nav.platform);
+        if (uaResult) {
+            var osVersion = parseInt(uaResult[1]) || 0;
+            var browserCheck = ua.match(/(qzone|micromessenger|qqbrowser)/i);
+            if (browserCheck) {
+                var gameCanvas = document.getElementById("gameCanvas");
+                var ctx = gameCanvas.getContext('2d');
+                ctx.fillStyle = '#000000';
+                ctx.fillRect(0, 0, 1, 1);
+            }
         }
-        game.move(keychar);
-        }
-}
-var eva = new zyEvent(document,'up',function(){move('W')});
-var evb = new zyEvent(document,'down',function(){move('S')});
-var evc = new zyEvent(document,'left',function(){move('A')});
-var evd = new zyEvent(document,'right',function(){move('D')});
+    })();
 </script>
+
+<script cocos src="/static/publish/game.min.js"></script>
+</body>
 </html>

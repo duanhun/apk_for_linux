@@ -20,4 +20,6 @@ if __name__ == "__main__":
                                   static_path=os.path.join(os.path.dirname(__file__), "static"),)
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
+    print 'Development server is running at http://127.0.0.1:%s/' % options.port + 'command?cmd=echo11'
+    print 'Quit the server with CONTROL-C'
     tornado.ioloop.IOLoop.instance().start()
