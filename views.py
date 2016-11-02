@@ -20,11 +20,27 @@ class IndexHandler(BaseHandler):
 class CommandHandler(BaseHandler):
     def get(self):
         command = self.get_argument('cmd', 'echo "error!"')
-        if command == '2048':
+        logger("command:", command)
+        (status, output) = commands.getstatusoutput(command)
+        output = output.decode('gbk').encode('utf8') # windows
+        self.write("Output:" + output)
+        #     self.render('IdiomCraft.html')
+        # else:
+        #     self.render('error.html')
+
+class GameHandler(BaseHandler):
+    def get(self):
+        command = self.get_argument('cmd', 'echo "error!"')
+        if command == 'IdiomCraft':
         # logger("command:", command)
         # (status, output) = commands.getstatusoutput(command)
         # output = output.decode('gbk').encode('utf8') # windows
         # self.write("Output:" + output)
-            self.render('template/index.html')
+            self.render('IdiomCraft.html')
         else:
-            self.render('template/error.html')
+            self.render('error.html')
+
+
+class HomeHandler(BaseHandler):
+    def get(self, *args, **kwargs):
+        self.redirect("/static/html/index.html")

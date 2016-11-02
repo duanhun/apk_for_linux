@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>塌陷成语</title>
+    <script src="{{ static_url('js/jquery-2.1.3.min.js') }}"></script>
+    <script>
+        block_width = $(window).width()/20;
+        block_height = block_width;
+    </script>
+    <style>
+        .block_blank{
+            margin:2px;
+            width:50px;
+            height:50px;
+            float:left;
+            position:relative; <!-- 设置了才能滑动 -->
+        }
+        .block_capture{
+            background-color:red;
+            margin:2px;
+            width:50px;
+            height:50px;
+            float:left;
+            position:relative; <!-- 设置了才能滑动 -->
+        }
+
+        .block_idiom{
+            background-color:#00FFFF;
+            margin:2px;
+            width:50px;
+            height:50px;
+            float:left;
+
+        }
+    </style>
+</head>
+
+<body>
+
+<div>
+<!-- 字火车  -->
+    <div id="queue0" class="block_capture" onclick="selectIndex(0)">
+        0
+    </div>
+    <div id="queue1" class="block_capture" onclick="selectIndex(1)">
+        1
+    </div>
+    <div id="queue2" class="block_blank" onclick="selectIndex(2)">
+        2
+    </div>
+    <div id="queue3" class="block_blank" onclick="selectIndex(3)">
+        3
+    </div>
+    <div id="queue4" class="block_blank" onclick="selectIndex(4)">
+        4
+    </div>
+    <div id="queue5" class="block_blank" onclick="selectIndex(5)">
+        5
+    </div>
+    <div id="queue6" class="block_blank" onclick="selectIndex(6)">
+        6
+    </div>
+    <div id="queue7" class="block_blank" onclick="selectIndex(7)">
+        7
+    </div>
+    <div id="queue8" class="block_blank" onclick="selectIndex(8)">
+        8
+    </div>
+    <div id="queue9" class="block_blank" onclick="selectIndex(9)">
+        9
+    </div>
+</div>
+
+
+<br>
+<br>
+
+<!-- 塌陷骨架 -->
+<div style="position:absolute;margin-top:100px">
+    <div >
+        <div id="idiom0" class="block_idiom" onclick="tryToFill(0)">
+            0
+        </div>
+        <div id="idiom1" class="block_idiom" onclick="tryToFill(1)">
+            1
+        </div>
+        <div id="idiom2" class="block_idiom" onclick="tryToFill(2)">
+            2
+        </div>
+        <div id="idiom3" class="block_idiom" onclick="tryToFill(3)">
+            3
+        </div>
+        <div id="idiom4" class="block_idiom" onclick="tryToFill(4)">
+            4
+        </div>
+        <div id="idiom5" class="block_idiom" onclick="tryToFill(5)">
+            5
+        </div>
+        <div id="idiom6" class="block_idiom" onclick="tryToFill(6)">
+            6
+        </div>
+        <div id="idiom7" class="block_idiom" onclick="tryToFill(7)">
+            7
+        </div>
+        <div id="idiom8" class="block_idiom" onclick="tryToFill(8)">
+            8
+        </div>
+        <div id="idiom9" class="block_idiom" onclick="tryToFill(9)">
+            9
+        </div>
+    </div>
+    <br>
+    <div >
+        <div id="idiom10" class="block_idiom" onclick="tryToFill(10)">
+            10
+        </div>
+        <div id="idiom11" class="block_idiom" onclick="tryToFill(11)">
+            11
+        </div>
+        <div id="idiom12" class="block_idiom" onclick="tryToFill(12)">
+            12
+        </div>
+        <div id="idiom13" class="block_idiom" onclick="tryToFill(13)">
+            13
+        </div>
+        <div id="idiom14" class="block_idiom" onclick="tryToFill(14)">
+            14
+        </div>
+        <div id="idiom15" class="block_idiom" onclick="tryToFill(15)">
+            15
+        </div>
+        <div id="idiom16" class="block_idiom" onclick="tryToFill(16)">
+            16
+        </div>
+        <div id="idiom17" class="block_idiom" onclick="tryToFill(17)">
+            17
+        </div>
+        <div id="idiom18" class="block_idiom" onclick="tryToFill(18)">
+            18
+        </div>
+        <div id="idiom19" class="block_idiom" onclick="tryToFill(19)">
+            19
+        </div>
+    </div>
+    <div>
+        <div id="idiom20" class="block_idiom" onclick="tryToFill(20)">
+            20
+        </div>
+        <div id="idiom21" class="block_idiom" onclick="tryToFill(21)">
+            21
+        </div>
+        <div id="idiom22" class="block_idiom" onclick="tryToFill(22)">
+            22
+        </div>
+        <div id="idiom23" class="block_idiom" onclick="tryToFill(23)">
+            23
+        </div>
+        <div id="idiom24" class="block_idiom" onclick="tryToFill(24)">
+            24
+        </div>
+        <div id="idiom25" class="block_idiom" onclick="tryToFill(25)">
+            25
+        </div>
+        <div id="idiom26" class="block_idiom" onclick="tryToFill(26)">
+            26
+        </div>
+        <div id="idiom27" class="block_idiom" onclick="tryToFill(27)">
+            27
+        </div>
+        <div id="idiom28" class="block_idiom" onclick="tryToFill(28)">
+            28
+        </div>
+        <div id="idiom29" class="block_idiom" onclick="tryToFill(29)">
+            29
+        </div>
+    </div>
+    <div >
+        <div id="idiom30" class="block_idiom" onclick="tryToFill(30)">
+            30
+        </div>
+        <div id="idiom31" class="block_idiom" onclick="tryToFill(31)">
+            31
+        </div>
+        <div id="idiom32" class="block_idiom" onclick="tryToFill(32)">
+            32
+        </div>
+        <div id="idiom33" class="block_idiom" onclick="tryToFill(33)">
+            33
+        </div>
+        <div id="idiom34" class="block_idiom" onclick="tryToFill(34)">
+            34
+        </div>
+        <div id="idiom35" class="block_idiom" onclick="tryToFill(35)">
+            35
+        </div>
+        <div id="idiom36" class="block_idiom" onclick="tryToFill(36)">
+            36
+        </div>
+        <div id="idiom37" class="block_idiom" onclick="tryToFill(37)">
+            37
+        </div>
+        <div id="idiom38" class="block_idiom" onclick="tryToFill(38)">
+            38
+        </div>
+        <div id="idiom39" class="block_idiom" onclick="tryToFill(39)">
+            39
+        </div>
+    </div>
+
+</div>
+
+<script style="text/javascript">
+    function refreshQueue(){
+        for(var i = 0;i<=9;i++){
+            if(i<changingQueue.length){
+                if(changingQueue[i]==0){
+                    $("#queue"+i).css("background-color","white");
+                }else{
+                    $("#queue"+i).css("background-color","red");
+                }
+            }else{
+                $("#queue"+i).css("background-color","white");
+            }
+        }
+    }
+
+    var idiomQueue = new Array();
+    var changingQueue = new Array();
+    var whichSelector = -1;
+
+    function init(){
+        for(var i=0;i<=9;i++){
+            idiomQueue[i]=0;
+            $("#queue"+i).css({"width":block_width, "height":block_height});
+        }
+        refreshQueue();
+    }
+
+    init();
+
+    var times = 1
+
+    function goOn(){
+        for(var i=0;i<10;i++){
+            $("#queue"+i).animate({left: (block_width+2)*times + 'px'},1000);
+        }
+        times ++;
+    }
+
+    //选取火车字下标
+    function selectIndex(index){
+        whichSelector = index;
+    }
+
+    function tryToFill(index){
+        if(isFill(index)){
+            if(changingQueue.length>0){
+                if(index<changingQueue.length){
+                    changingQueue.splice(index,1); // 删除选择项
+                }else{
+                    changingQueue.splice(changingQueue.length-1,1);
+                }
+            }
+        }else{ // 不满足条件时
+            changingQueue[changingQueue.length]=1;
+        }
+        refreshQueue();
+        //for(idiomQueue.length)
+        if(changingQueue.length>10){
+            alert('You Fail！');
+            window.location.reload()
+        }
+    }
+
+    //判断是否可以填充使成语消失
+    function isFill(index){
+        if(index % whichSelector==0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+</script>
+</body>
+</html>

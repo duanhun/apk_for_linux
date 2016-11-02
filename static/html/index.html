@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>静态首页</title>
+</head>
+<body>
+静态首页内容
+
+<ul id="repeat-object" class="demo">
+  <li v-for="value in object">
+    {{ $key }} : {{ value }}
+  </li>
+</ul>
+
+<script src="/static/js/vue.js"></script>
+<script>
+    new Vue({
+  el: '#repeat-object',
+  data: {
+    object: {
+      FirstName: 'John',
+      LastName: 'Doe',
+      Age: 30
+    }
+  }
+})
+</script>
+</body>
+</html>

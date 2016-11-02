@@ -2,9 +2,13 @@
 __author__ = 'Jeffrey'
 
 from views import (IndexHandler,
-                   CommandHandler,)
+                   CommandHandler,
+                   GameHandler,
+                   HomeHandler)
 
 urls = [
     # (r'/', IndexHandler),
     (r'^/command$', CommandHandler),
+    (r'^/game$', GameHandler),
+    (r'^/index$', HomeHandler)
 ]

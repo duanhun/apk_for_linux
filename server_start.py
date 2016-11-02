@@ -17,9 +17,11 @@ define("port", default=12345, help="run on the given port", type=int)
 if __name__ == "__main__":
     tornado.options.parse_command_line()
     app = tornado.web.Application(handlers=urls,
-                                  static_path=os.path.join(os.path.dirname(__file__), "static"),)
+                                  template_path=os.path.join(os.path.dirname(__file__), "templates"),
+                                  static_path=os.path.join(os.path.dirname(__file__), "static"),
+                                  debug=True,)
     http_server = tornado.httpserver.HTTPServer(app)
     http_server.listen(options.port)
-    print 'Development server is running at http://127.0.0.1:%s/' % options.port + 'command?cmd=echo11'
+    print 'Development server is running at http://127.0.0.1:%s/' % options.port + 'game?cmd=IdiomCraft'
     print 'Quit the server with CONTROL-C'
     tornado.ioloop.IOLoop.instance().start()
